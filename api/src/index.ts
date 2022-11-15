@@ -9,8 +9,8 @@ mongoose.connect('mongodb://localhost:27017').then(() => {
   const app = express();
   const PORT = 3001;
 
-  // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads'))); //unix
-  app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads').replace('\\src', ''))); // windows
+  app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads'))); //unix
+  // app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads').replace('\\src', ''))); // windows
 
   app.use(express.json());
   app.use(router);

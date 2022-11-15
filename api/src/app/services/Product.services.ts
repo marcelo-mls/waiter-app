@@ -29,3 +29,11 @@ export async function createProducts(req: Request, res: Response) {
     res.status(500).json({ error });
   }
 }
+
+export async function deleteProduct(req: Request, res: Response) {
+  const { productId } = req.params;
+
+  await Product.findByIdAndDelete(productId);
+
+  res.status(204).end();
+}
