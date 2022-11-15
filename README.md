@@ -14,6 +14,7 @@
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
@@ -26,5 +27,5 @@
 
 </div>
 
-API developed with Node.js, TypeScript, MongoDB and Express.
-> API desenvolvida com Node.js, TypeScript, MongoDB e Express.
+API developed with Node.js, TypeScript, MongoDB, Docker and Express.
+> API desenvolvida com Node.js, TypeScript, MongoDB, Docker e Express.
