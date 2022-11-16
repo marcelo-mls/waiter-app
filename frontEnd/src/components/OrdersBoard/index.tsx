@@ -18,11 +18,16 @@ function OrdersBoard(props: OrdersBoardProps) {
     setSelectedOrder(order);
   }
 
+  function handleCloseModal() {
+    setModalVisibility(false);
+    setSelectedOrder(null);
+  }
+
   const {icon, title, orders} = props;
 
   return(
     <Board>
-      <OrderModal visible={modalVisibility} order={selectedOrder} />
+      <OrderModal visible={modalVisibility} order={selectedOrder} onClose={handleCloseModal} />
       <header>
         <span>{icon}</span>
         <strong>{title}</strong>

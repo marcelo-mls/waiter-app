@@ -1,19 +1,38 @@
-import { Overlay, ModalBody, OrderDetail } from './style';
+import { Overlay, ModalBody, OrderDetail, Actions } from './style';
 import closeIcon from '../../assets/images/close-icon.svg';
 import { Order } from '../../interfaces/Order';
 import formatCurrency from '../../utils/formatCurrency';
+import { useEffect } from 'react';
 
 interface OrderModalProps {
   visible: boolean;
   order: Order | null;
+  onClose: () => void;
 }
 
 function OrderModal(props: OrderModalProps) {
-  const {visible, order} = props;
+  const {visible, order, onClose} = props;
 
   if (!visible || !order) {
     return null;
   }
+
+  let total = 0;
+  order.products.forEach((item) => {
+    total += item.product.price * item.quantity;
+  });
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   return(
     <Overlay>
@@ -22,7 +41,7 @@ function OrderModal(props: OrderModalProps) {
         <header>
           <strong>Mesa {order.table}</strong>
           <button type="button">
-            <img src={closeIcon} alt="ícone de fechamento"/>
+            <img src={closeIcon} alt="ícone de fechamento" onClick={onClose}/>
           </button>
         </header>
 
@@ -50,8 +69,8 @@ function OrderModal(props: OrderModalProps) {
                 <img
                   src={`http://localhost:3001/uploads/${item.product.imagePath}`}
                   alt={item.product.name}
-                  width="56"
-                  height="28.51"
+                  width="86"
+                  height="43.78"
                 />
                 <span className="quantity">{item.quantity}x</span>
 
@@ -63,7 +82,30 @@ function OrderModal(props: OrderModalProps) {
               </div>
             ))}
           </div>
+
+          <div className="total">
+            <span>Total</span>
+            <strong>{formatCurrency(total)}</strong>
+          </div>
         </OrderDetail>
+
+        <Actions>
+          <button type="button" className='primary'>
+            <span>
+              {order.status === 'WAITING' && '👨‍🍳'}
+              {order.status === 'IN_PRODUCTION' && '✅'}
+            </span>
+            <span>
+              {order.status === 'WAITING' && 'Iniciar Produção'}
+              {order.status === 'IN_PRODUCTION' && 'Concluir Pedido!'}
+            </span>
+          </button>
+
+          {order.status !== 'DONE' &&
+          <button type="button" className='secondary'>
+            <span>Cancelar</span>
+          </button>}
+        </Actions>
 
       </ModalBody>
     </Overlay>
