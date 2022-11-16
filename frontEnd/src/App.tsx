@@ -1,10 +1,11 @@
 import { GlobalStyles } from './styles/GlobalStyles';
+import Header from './components/Header';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <h1> Waiter App </h1>
+      <Header />
     </>
   );
 }
