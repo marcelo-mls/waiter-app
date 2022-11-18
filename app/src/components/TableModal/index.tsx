@@ -16,6 +16,12 @@ function TableModal(props: TableModalProps) {
 
   const [table, setTable] = useState('');
 
+  function handleSave() {
+    onSave(table);
+    onClose();
+    setTable('');
+  }
+
   const { visible, onClose, onSave } = props;
 
   return (
@@ -23,6 +29,7 @@ function TableModal(props: TableModalProps) {
       transparent
       visible={visible}
       animationType="fade"
+      onRequestClose={onClose}
     >
 
       <Overlay behavior={isAndroid ? 'height' : 'padding'}>
@@ -44,7 +51,7 @@ function TableModal(props: TableModalProps) {
               onChangeText={(value) => setTable(value)}
             />
             <Button
-              onPress={() => onSave(table)}
+              onPress={handleSave}
               disabled={table.length === 0}
             >
               Salvar

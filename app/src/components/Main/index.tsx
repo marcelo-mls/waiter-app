@@ -12,14 +12,20 @@ function Main() {
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
-    setIsTableModalVisible(false);
+  }
+
+  function handleCancelOrder() {
+    setSelectedTable('');
   }
 
   return (
     <>
       <Container>
 
-        <Header />
+        <Header
+          selectedTable={selectedTable}
+          onCancelOrder={handleCancelOrder}
+        />
 
         <CategoriesContainer>
           <Categories />
@@ -33,11 +39,11 @@ function Main() {
 
       <Footer>
         <FooterContainer>
-          {/* {!selectedTable && ( */}
-          <Button onPress={() => setIsTableModalVisible(true)}>
+          {!selectedTable && (
+            <Button onPress={() => setIsTableModalVisible(true)}>
             Novo Pedido
-          </Button>
-          {/* )} */}
+            </Button>
+          )}
         </FooterContainer>
       </Footer>
 
