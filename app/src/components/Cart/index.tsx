@@ -6,25 +6,44 @@ import { MinusCircle } from '../Icons/MinusCircle';
 import { Text } from '../Text';
 import formatCurrency from '../../utils/formatCurrency';
 import Button from '../Button/index';
+import OrderConfirmedModal from '../OrderConfirmedModal';
+import { useState } from 'react';
 
 
 interface CartProps {
   cartItems: CartItem[];
   onAdd: (product: IProduct) => void;
   onRemove: (product: IProduct) => void;
+  onConfirmOrder:() => void;
 }
 
 function Cart(props: CartProps) {
-  const { cartItems, onAdd, onRemove } = props;
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { cartItems, onAdd, onRemove, onConfirmOrder } = props;
 
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
   }, 0);
 
+  function handleConfirmOrder() {
+    setIsModalVisible(true);
+  }
 
+  function handleOK() {
+    onConfirmOrder();
+    setIsModalVisible(false);
+  }
 
   return (
     <>
+
+      <OrderConfirmedModal
+        visible={isModalVisible}
+        onOk={handleOK}
+      />
+
       {cartItems.length > 0 &&
         (<FlatList
           data={cartItems}
@@ -58,6 +77,7 @@ function Cart(props: CartProps) {
                 >
                   <PlusCircle/>
                 </TouchableOpacity>
+
                 <TouchableOpacity onPress={() => onRemove(item.product)}>
                   <MinusCircle />
                 </TouchableOpacity>
@@ -81,8 +101,9 @@ function Cart(props: CartProps) {
         </TotalContainer>
 
         <Button
-          onPress={() => alert('confirmar pedido')}
+          onPress={handleConfirmOrder}
           disabled={cartItems.length === 0}
+          loading={isLoading}
         >
           Confirmar Pedido
         </Button>

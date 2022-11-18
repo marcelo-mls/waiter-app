@@ -8,8 +8,10 @@ import ProductModal from '../ProductModal';
 import { useState } from 'react';
 import { IProduct } from '../../interfaces/interfaces';
 
+
 interface MenuProps {
   onAddToCart: (product: IProduct) => void;
+  products: IProduct[];
 }
 
 function Menu(props: MenuProps) {
