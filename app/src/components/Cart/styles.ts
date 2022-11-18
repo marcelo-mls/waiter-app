@@ -35,5 +35,6 @@ export const Summary = styled.View`
 `;
 
 export const TotalContainer = styled.View`
-
+  margin-right: 32px;
+  flex: 1;
 `;
