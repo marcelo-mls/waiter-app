@@ -17,5 +17,5 @@ export const Table = styled.View`
   background: #fff;
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
-  margin-top: 16px;
+  margin-top: 8px;
 `;

@@ -1,5 +1,5 @@
 export interface IProduct {
-  _id?: string;
+  _id: string;
   name: string;
   description: string;
   imagePath: string;
@@ -9,4 +9,9 @@ export interface IProduct {
       icon: string;
       _id: string;
   }[];
+}
+
+export interface CartItem {
+  quantity: number;
+  product: IProduct;
 }
