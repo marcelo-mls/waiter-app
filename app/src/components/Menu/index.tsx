@@ -1,5 +1,4 @@
 import { FlatList } from 'react-native';
-import { products } from '../../mocks/products';
 import { ProductDetails, Product, ProductImage, Separator, AddToCartButton } from './styles';
 import { Text } from '../Text';
 import formatCurrency from '../../utils/formatCurrency';
@@ -7,7 +6,7 @@ import { PlusCircle } from '../Icons/PlusCircle';
 import ProductModal from '../ProductModal';
 import { useState } from 'react';
 import { IProduct } from '../../interfaces/interfaces';
-
+import { localHostWithPort } from '../../utils/networkUtils';
 
 interface MenuProps {
   onAddToCart: (product: IProduct) => void;
@@ -23,7 +22,7 @@ function Menu(props: MenuProps) {
     setSelectedProduct(product);
   }
 
-  const { onAddToCart } = props;
+  const { onAddToCart, products } = props;
 
   return (
     <>
@@ -37,7 +36,7 @@ function Menu(props: MenuProps) {
           <Product onPress={() => handleOpenModal(item)}>
             <ProductImage
               source={{
-                uri: `http://192.168.1.16:3001/uploads/${item.imagePath}`,
+                uri: `http://${localHostWithPort}/uploads/${item.imagePath}`,
               }}
             />
 

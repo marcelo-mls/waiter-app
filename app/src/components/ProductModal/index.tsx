@@ -5,6 +5,7 @@ import { Image, CloseButton, Header, ModalBody, IngredientsContainer, Ingredient
 import { Close } from '../Icons/Close';
 import formatCurrency from '../../utils/formatCurrency';
 import Button from '../Button/index';
+import { localHostWithPort } from '../../utils/networkUtils';
 
 interface ProductModal {
   visible: boolean;
@@ -32,7 +33,7 @@ function ProductModal(props: ProductModal) {
     >
       <Image
         source={{
-          uri: `http://192.168.1.16:3001/uploads/${product.imagePath}`,
+          uri: `http://${localHostWithPort}/uploads/${product.imagePath}`,
         }}
       >
         <CloseButton onPress={onClose}>

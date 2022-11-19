@@ -8,6 +8,7 @@ import formatCurrency from '../../utils/formatCurrency';
 import Button from '../Button/index';
 import OrderConfirmedModal from '../OrderConfirmedModal';
 import { useState } from 'react';
+import { localHostWithPort } from '../../utils/networkUtils';
 
 
 interface CartProps {
@@ -56,7 +57,7 @@ function Cart(props: CartProps) {
               <ProductContainer>
                 <Image
                   source={{
-                    uri: `http://192.168.1.16:3001/uploads/${item.product.imagePath}`,
+                    uri: `http://${localHostWithPort}/uploads/${item.product.imagePath}`,
                   }}
                 />
 

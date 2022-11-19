@@ -15,3 +15,9 @@ export interface CartItem {
   quantity: number;
   product: IProduct;
 }
+
+export interface Category {
+  _id: string;
+  name: string;
+  icon: string;
+}
