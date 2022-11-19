@@ -6,7 +6,7 @@ import { PlusCircle } from '../Icons/PlusCircle';
 import ProductModal from '../ProductModal';
 import { useState } from 'react';
 import { IProduct } from '../../interfaces/interfaces';
-import { localHostWithPort } from '../../utils/networkUtils';
+import { localHostWithPort } from '../../utils/api';
 
 interface MenuProps {
   onAddToCart: (product: IProduct) => void;

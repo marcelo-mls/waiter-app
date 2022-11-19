@@ -8,7 +8,7 @@ import formatCurrency from '../../utils/formatCurrency';
 import Button from '../Button/index';
 import OrderConfirmedModal from '../OrderConfirmedModal';
 import { useState } from 'react';
-import { localHostWithPort } from '../../utils/networkUtils';
+import { api, localHostWithPort } from '../../utils/api';
 
 
 interface CartProps {
@@ -16,19 +16,35 @@ interface CartProps {
   onAdd: (product: IProduct) => void;
   onRemove: (product: IProduct) => void;
   onConfirmOrder:() => void;
+  selectedTable: string;
 }
 
 function Cart(props: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { cartItems, onAdd, onRemove, onConfirmOrder } = props;
+  const { cartItems, onAdd, onRemove, onConfirmOrder, selectedTable } = props;
 
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
   }, 0);
 
-  function handleConfirmOrder() {
+  async function handleConfirmOrder() {
+    const products = cartItems.map((item) => (
+      {
+        product: item.product._id,
+        quantity: item.quantity
+      }
+    ));
+
+    const payload = {
+      table: selectedTable,
+      products,
+    };
+
+    setIsLoading(true);
+    await api.post('/orders', payload);
+    setIsLoading(false);
     setIsModalVisible(true);
   }
 

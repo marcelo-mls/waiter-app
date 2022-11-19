@@ -10,8 +10,7 @@ import { CartItem, Category, IProduct } from '../../interfaces/interfaces';
 import { ActivityIndicator } from 'react-native';
 import { Empty } from '../Icons/Empty';
 import { Text } from '../Text';
-import axios from 'axios';
-import { localHostWithPort } from '../../utils/networkUtils';
+import { api } from '../../utils/api';
 
 
 function Main() {
@@ -21,23 +20,29 @@ function Main() {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
 
   useEffect(() => {
     Promise.all([
-      axios.get(`http:${localHostWithPort}/categories`),
-      axios.get(`http:${localHostWithPort}/products`),
+      api.get('/categories'),
+      api.get('/products'),
     ]).then(([categoriesResponse, productsResponse]) => {
       setCategories(categoriesResponse.data);
       setProducts(productsResponse.data);
       setIsLoading(false);
     });
-
-    // axios.get(`http:${localHostWithPort}/categories`)
-    //   .then((response) => setCategories(response.data));
-
-    // axios.get(`http:${localHostWithPort}/products`)
-    //   .then((response) => setProducts(response.data));
   }, []);
+
+  async function handleSelectCategory(categoryId: string) {
+    const route = categoryId ? `/categories/${categoryId}/products` : '/products';
+
+    setIsLoadingProducts(true);
+
+    const response = await api.get(route);
+
+    setProducts(response.data);
+    setIsLoadingProducts(false);
+  }
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -115,18 +120,29 @@ function Main() {
         {!isLoading && (
           <>
             <CategoriesContainer>
-              <Categories categories={categories} />
+              <Categories
+                categories={categories}
+                onSelectCategory={handleSelectCategory}
+              />
             </CategoriesContainer>
 
-            {products.length > 0 ? (
-              <MenuContainer>
-                <Menu onAddToCart={handleAddToCart} products={products}/>
-              </MenuContainer>
-            ) : (
+            {isLoadingProducts ? (
               <CenteredContainer>
-                <Empty />
-                <Text color='#666' style={{ marginTop: 24 }}>Nenhum produto foi encontrado!</Text>
+                <ActivityIndicator color="#D73035" size="large"/>
               </CenteredContainer>
+            ) : (
+              <>
+                {products.length > 0 ? (
+                  <MenuContainer>
+                    <Menu onAddToCart={handleAddToCart} products={products}/>
+                  </MenuContainer>
+                ) : (
+                  <CenteredContainer>
+                    <Empty />
+                    <Text color='#666' style={{ marginTop: 24 }}>Nenhum produto foi encontrado!</Text>
+                  </CenteredContainer>
+                )}
+              </>
             )}
           </>
         )}
@@ -150,6 +166,7 @@ function Main() {
               onAdd={handleAddToCart}
               onRemove={handleDecrementCartItem}
               onConfirmOrder={handleResetOrder}
+              selectedTable={selectedTable}
             />
           )}
         </FooterContainer>

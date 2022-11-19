@@ -6,6 +6,7 @@ import { CategoryContainer, Icon } from './styles';
 
 interface CategoriesProps {
   categories: Category[];
+  onSelectCategory: (categoryId: string) => Promise<void>;
 }
 
 function Categories(props: CategoriesProps) {
@@ -13,10 +14,12 @@ function Categories(props: CategoriesProps) {
 
   function handleSelectCategory(categoryId: string) {
     const category = selectedCategory === categoryId ? '' : categoryId;
+
+    onSelectCategory(category);
     setSelectedCategory(category);
   }
 
-  const { categories } = props;
+  const { categories, onSelectCategory } = props;
 
   return (
     <FlatList
