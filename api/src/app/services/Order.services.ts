@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
+import { io } from '../..';
 import { Order } from '../models/Order.model';
 
 export async function listOrders(_req: Request, res: Response) {
   const result = await Order
     .find()
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: 1 })
     .populate('products.product');
 
   res.status(200).json(result);
@@ -15,6 +16,9 @@ export async function createOrder(req: Request, res: Response) {
     const {table, products} = req.body;
 
     const result = await Order.create({table, products});
+    const orderDetails = await result.populate('products.product');
+
+    io.emit('order@new', orderDetails);
 
     res.status(201).json(result);
   } catch (error) {
