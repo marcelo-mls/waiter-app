@@ -3,9 +3,20 @@ import OrdersBoard from '../OrdersBoard';
 import { useState, useEffect } from 'react';
 import { Order } from '../../interfaces/Order';
 import { api } from '../../utils/api';
+import socketIo from 'socket.io-client';
 
 function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const socket = socketIo('http://localhost:3001' , {
+      transports: ['websocket'],
+    });
+
+    socket.on('order@new', (order) => {
+      setOrders((prevState) => prevState.concat(order));
+    });
+  }, []);
 
   useEffect(() => {
     api.get('/orders')
