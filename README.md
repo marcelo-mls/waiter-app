@@ -34,4 +34,4 @@
 
 <hr>
 
-Aplicação desenvolvida durante a semana 'O poder do JStack' do canal <a href="https://www.youtube.com/@MateusSilvaDev" target="_blank">@MateusSilvaDev</a>
+Aplicação desenvolvida durante a semana 'O poder do JStack' do canal <a href="https://www.youtube.com/@imateussilva" target="_blank">@imateussilva</a>
