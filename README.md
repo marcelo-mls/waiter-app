@@ -1,7 +1,7 @@
 ## Waiter App
 
-### An app to help waiters to create and manage orders in a restaurant.
-> Um aplicativo para ajudar garçons a criar e gerenciar pedidos em um restaurante.
+### Web and mobile application for managing orders in a restaurant..
+> Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
 
 ### Built With:
 > Desenvolvido com:
