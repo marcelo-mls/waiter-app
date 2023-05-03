@@ -1,9 +1,30 @@
-## Waiter App
+# Waiter App
 
-### Web and mobile application for managing orders in a restaurant..
+## Description
+Web and mobile application for managing orders in a restaurant..
 > Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
 
-### Built With:
+<details>
+  <summary>
+  
+  ## Demonstration
+  </summary>
+  
+  - #### Web view
+  ![web_print_main](images/main-web-screen.png)
+  ![web_print_order_detail](images/order-detail-web-screen.png)
+  ![web_print_order_confirm](images/order-confirm-web-screen.png)
+
+  - #### App view
+  ![app_print_main](images/main-app-screen.png)
+  ![app_print_order_table](images/order-table-app-screen.png)
+  ![app_print_cart](images/cart-app-screen.png)
+  ![app_print_order_detail](images/order-detail-app-screen.png)
+  ![app_print_order_confirm](images/order-confirm-app-screen.jpeg)
+</details>
+
+
+## Built With:
 > Desenvolvido com:
 <!-- https://github.com/Ileriayo/markdown-badges -->
 <div align="center">
@@ -30,8 +51,21 @@
 
 </div>
 
-<br>
+---
 
-<hr>
+<br />
 
-Aplicação desenvolvida durante a semana 'O poder do JStack' do canal <a href="https://www.youtube.com/@imateussilva" target="_blank">@imateussilva</a>
+Developed by [Marcelo Marques](https://www.linkedin.com/in/marcelo-mls/).
+
+<div>
+  <a href = "https://www.linkedin.com/in/marcelo-mls/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin" />
+  </a>
+  <a href="mailto:marcelo-mls@hotmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/Hotmail-0077B5?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</div>
+
+<br />
+
+> Aplicação desenvolvida durante a semana 'O poder do JStack' do canal <a href="https://www.youtube.com/@imateussilva" target="_blank">@imateussilva</a>
