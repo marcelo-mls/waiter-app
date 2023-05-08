@@ -1,6 +1,10 @@
 <img align="center" src="images/__home__.png" alt="Red background with a demonstration of the web view in a notebook and a smartphone with the app view">
 
 # WaiterApp
+Web and mobile application for managing orders in a restaurant..
+> Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
+
+<br />
 
 ## Built With:
 > Desenvolvido com:
@@ -29,10 +33,6 @@
 
 </div>
 
-## Description
-Web and mobile application for managing orders in a restaurant..
-> Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
-
 <details>
   <summary>
   
@@ -41,8 +41,7 @@ Web and mobile application for managing orders in a restaurant..
   
   <details>
     <summary>
-
-  - #### Web view
+      <h3>Web view</h3>
     </summary>
     <img src="images/web_01_home.png" alt="web_01_home" height="720">
     <img src="images/web_02_modal.png" alt="web_02_modal" height="720">
@@ -50,8 +49,7 @@ Web and mobile application for managing orders in a restaurant..
 
   <details>
     <summary>
-
-  - #### App view
+      <h3>App view</h3>
     </summary>
     <div>
       <img src="images/app_01_home.png" alt="app_01_home" height="720">
