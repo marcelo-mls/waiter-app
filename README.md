@@ -1,28 +1,6 @@
-# Waiter App
+<img align="center" src="images/__home__.png" alt="Red background with a demonstration of the web view in a notebook and a smartphone with the app view">
 
-## Description
-Web and mobile application for managing orders in a restaurant..
-> Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
-
-<details>
-  <summary>
-  
-  ## Demonstration
-  </summary>
-  
-  - #### Web view
-  ![web_print_main](images/main-web-screen.png)
-  ![web_print_order_detail](images/order-detail-web-screen.png)
-  ![web_print_order_confirm](images/order-confirm-web-screen.png)
-
-  - #### App view
-  ![app_print_main](images/main-app-screen.png)
-  ![app_print_order_table](images/order-table-app-screen.png)
-  ![app_print_cart](images/cart-app-screen.png)
-  ![app_print_order_detail](images/order-detail-app-screen.png)
-  ![app_print_order_confirm](images/order-confirm-app-screen.jpeg)
-</details>
-
+# WaiterApp
 
 ## Built With:
 > Desenvolvido com:
@@ -50,6 +28,40 @@ Web and mobile application for managing orders in a restaurant..
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 </div>
+
+## Description
+Web and mobile application for managing orders in a restaurant..
+> Aplicação web e mobile para gerenciamento de pedidos em um restaurante.
+
+<details>
+  <summary>
+  
+  ## Demonstration
+  </summary>
+  
+  <details>
+    <summary>
+
+  - #### Web view
+    </summary>
+    <img src="images/web_01_home.png" alt="web_01_home" height="720">
+    <img src="images/web_02_modal.png" alt="web_02_modal" height="720">
+  </details>
+
+  <details>
+    <summary>
+
+  - #### App view
+    </summary>
+    <div>
+      <img src="images/app_01_home.png" alt="app_01_home" height="720">
+      <img src="images/app_02_empty_cart.png" alt="app_02_empty_cart" height="720">
+      <img src="images/app_03_cart.png" alt="app_03_cart" height="720">
+      <img src="images/app_04_order_detail.png" alt="app_04_order_detail" height="720">
+      <img src="images/app_05_confirm.png" alt="app_05_confirm" height="720">
+    </div>
+  </details>
+</details>
 
 ---
 
